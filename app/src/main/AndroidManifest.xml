@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
+    package="edu.mcu.team03.guideassistsnt">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@mipmap/icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/icon"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tool:replace="android:icon">
+        <activity
+            android:name=".ui.MainActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.record.RecordActivity"
+            android:label="@string/title_activity_record"
+            android:launchMode="singleTask"
+            android:parentActivityName=".ui.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.mcu.team03.guideassistsnt.ui.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.record.EditRecordActivity"
+            android:label="@string/title_activity_record_edit"
+            android:launchMode="singleTop"
+            android:parentActivityName=".ui.record.RecordActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.mcu.team03.guideassistsnt.ui.record.RecordActivity" />
+        </activity>
+        <activity
+            android:name=".ui.record.ViewRecordActivity"
+            android:label="@string/title_activity_view_record"
+            android:parentActivityName=".ui.record.RecordActivity"
+            android:theme="@style/AppTheme.NoStatusBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.mcu.team03.guideassistsnt.ui.record.RecordActivity" />
+        </activity>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="edu.mcu.team03.guideassistsnt.sharephoto.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <meta-data
+            android:name="android.app.default_searchable"
+            android:value=".ui.SearchableActivity" />
+
+        <activity
+            android:name=".ui.SearchableActivity"
+            android:label="@string/title_activity_searchable"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+        <activity
+            android:name=".ui.schedule.ScheduleActivity"
+            android:label="@string/title_activity_schedule"
+            android:launchMode="singleTask"
+            android:parentActivityName=".ui.MainActivity"
+            android:theme="@style/AppTheme.NoStatusBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.mcu.team03.guideassistsnt.ui.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.record.ChooseRecordActivity"
+            android:label="@string/title_activity_record"
+            android:launchMode="singleTop"
+            android:parentActivityName=".ui.schedule.ScheduleActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.mcu.team03.guideassistsnt.ui.schedule.ScheduleActivity" />
+        </activity>
+        <activity
+            android:name=".ui.billing.BillingActivity"
+            android:label="@string/title_activity_billing"
+            android:launchMode="singleTask"
+            android:parentActivityName=".ui.MainActivity"
+            android:theme="@style/AppTheme.NoStatusBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.mcu.team03.guideassistsnt.ui.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ui.billing.EditBillingActivity"
+            android:label="@string/title_activity_edit_billing"
+            android:parentActivityName=".ui.billing.BillingActivity"
+            android:theme="@style/AppTheme.NoStatusBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.mcu.team03.guideassistsnt.ui.billing.BillingActivity" />
+        </activity>
+    </application>
+
+</manifest>
